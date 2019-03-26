@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/03/16 21:04:14.000.331,=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/03/16 21:08:23.000.500,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\UConexao.pas=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/03/16 21:08:23.000.500,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\UConexao.dfm=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2019/03/16 21:08:45.000.066,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\PConexao.dproj=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2019/03/16 21:11:15.000.215,=C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\Unit1.pas</Transaction>
+    <Transaction>2019/03/16 21:12:12.000.527,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\UDMConexao.dfm=C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\Unit1.dfm</Transaction>
+    <Transaction>2019/03/16 21:12:12.000.527,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\UDMConexao.pas=C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 22:11:03.000.752,=C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\Unit1.pas</Transaction>
+    <Transaction>2019/03/18 22:11:43.000.000,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\Unit1.pas=C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\UCadAluno.pas</Transaction>
+    <Transaction>2019/03/18 22:11:43.000.000,C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\Unit1.dfm=C:\Users\nathan22\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade02\fontes\UCadAluno.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

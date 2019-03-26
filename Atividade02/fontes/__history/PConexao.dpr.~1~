@@ -1,0 +1,14 @@
+program PConexao;
+
+uses
+  Vcl.Forms,
+  UConexao in 'UConexao.pas' {FConexao};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFConexao, FConexao);
+  Application.Run;
+end.

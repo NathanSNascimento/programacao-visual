@@ -1,0 +1,47 @@
+object DMConexao: TDMConexao
+  OldCreateOrder = False
+  Height = 236
+  Width = 346
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=Aula1'
+      'User_Name=postgres'
+      'Password=admin'
+      'DriverID=PG')
+    Left = 40
+    Top = 24
+  end
+  object FDDriverLink: TFDPhysPgDriverLink
+    VendorHome = 
+      'C:\Users\nathan22\Dropbox\TADS\2019_1\Programa'#231#227'o Visual\Ativida' +
+      'des\Atividade02\fontes\Win32\Debug'
+    Left = 224
+    Top = 32
+  end
+  object FDQAlunos: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * FROM CAD_ALUNO')
+    Left = 80
+    Top = 120
+    object FDQAlunosid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+    end
+    object FDQAlunosname: TWideStringField
+      FieldName = 'name'
+      Origin = 'name'
+      Size = 40
+    end
+    object FDQAlunosdt_nasc: TDateField
+      FieldName = 'dt_nasc'
+      Origin = 'dt_nasc'
+    end
+  end
+  object DSAlunos: TDataSource
+    DataSet = FDQAlunos
+    OnStateChange = DSAlunosStateChange
+    Left = 232
+    Top = 144
+  end
+end

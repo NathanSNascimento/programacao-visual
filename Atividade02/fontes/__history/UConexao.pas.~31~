@@ -1,0 +1,115 @@
+unit UConexao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFConexao = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    EServidor: TEdit;
+    EPorta: TEdit;
+    Panel2: TPanel;
+    Label3: TLabel;
+    EBanco: TEdit;
+    EUser: TEdit;
+    Label4: TLabel;
+    ESenha: TEdit;
+    Label5: TLabel;
+    Panel3: TPanel;
+    BConectar: TButton;
+    BDesconectar: TButton;
+    LSituacao: TLabel;
+    PSQL: TPanel;
+    ESQL: TEdit;
+    BExecutar: TButton;
+    DBGrid1: TDBGrid;
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BConectarClick(Sender: TObject);
+    procedure BDesconectarClick(Sender: TObject);
+    procedure BExecutarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FConexao: TFConexao;
+
+implementation
+
+{$R *.dfm}
+
+uses UDMConexao;
+
+
+procedure TFConexao.BConectarClick(Sender: TObject);
+begin
+  with dmconexao do
+  begin
+    FDConnection.Params.Values['Server'] := EServidor.Text;
+    FDConnection.Params.Values['Port'] := EPorta.Text;
+    FDConnection.Params.Database := EBanco.Text;
+    FDConnection.Params.UserName := EUser.Text;
+    FDConnection.Params.Password := ESenha.Text;
+
+    try
+      FDConnection.Connected := True;
+      LSituacao.Caption := 'Conectado';
+      LSituacao.Font.Color := clGreen;
+      BDesconectar.Enabled := True;
+      BConectar.Enabled := False;
+      PSQL.Enabled := True;                  ;
+      ESQL.Text := 'SELECT * FROM CAD_ALUNO';
+    except on E: Exception do
+      ShowMessage(E.ClassName + 'Não foi possivel conectar' + E.Message);
+    end;
+
+  end;
+
+end;
+
+procedure TFConexao.BDesconectarClick(Sender: TObject);
+begin
+  DMConexao.FDConnection.Connected := False;
+LSituacao.Caption := 'Desonectado';
+  LSituacao.Font.Color := clRed;
+  BDesconectar.Enabled := False;
+  BConectar.Enabled := True;
+  PSQL.Enabled := False;
+end;
+
+procedure TFConexao.BExecutarClick(Sender: TObject);
+begin
+  with dmconexao do
+  begin
+    FDAlunos.Close;
+    FDAlunos.SQL.Clear;
+    FDAlunos.SQL.Add(esql.Text);
+  end;
+end;
+
+procedure TFConexao.FormActivate(Sender: TObject);
+begin
+  EServidor.Text := 'localhost';
+  EPorta.Text := '5432';
+  EBanco.Text := 'Aula1';
+  EUser.Text := 'postgres';
+  BDesconectar.Enabled := False;
+  BConectar.Enabled := True;
+  PSQL.Enabled := False;
+end;
+
+procedure TFConexao.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  DMConexao.FDConnection.Connected := False;
+end;
+
+end.

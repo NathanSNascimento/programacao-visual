@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/02/25 22:19:44.000.324,=C:\Users\Natha\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/02/25 22:20:33.000.359,C:\Users\Natha\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade01\UAula01.pas=C:\Users\Natha\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/02/25 22:20:33.000.359,C:\Users\Natha\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade01\UAula01.dfm=C:\Users\Natha\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2019/02/25 22:21:09.000.938,C:\Users\Natha\Dropbox\TADS\2019_1\Programação Visual\Atividades\Atividade01\Fontes\Paula01.dproj=C:\Users\Natha\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

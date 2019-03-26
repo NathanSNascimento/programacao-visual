@@ -1,0 +1,51 @@
+unit UDMConexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.PG,
+  FireDAC.Phys.PGDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
+
+type
+  TDMConexao = class(TDataModule)
+    FDConnection: TFDConnection;
+    FDDriverLink: TFDPhysPgDriverLink;
+    FDQAlunos: TFDQuery;
+    DSAlunos: TDataSource;
+    FDQAlunosid: TIntegerField;
+    FDQAlunosname: TWideStringField;
+    FDQAlunosdt_nasc: TDateField;
+    procedure DSAlunosStateChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMConexao: TDMConexao;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UCadAluno;
+
+{$R *.dfm}
+
+procedure TDMConexao.DSAlunosStateChange(Sender: TObject);
+begin
+  with FcadAluno do
+  begin
+    BNovo.Enabled := DSAlunos.State in [dsBrowse];
+    BSalvar.Enabled := DSAlunos.State in [dsInsert, dsEdit];
+    BCancelar.Enabled := Bsalvar.Enabled;
+    BEditar.Enabled := (BNovo.Enabled) and (not(FDQAlunos.IsEmpty));
+  end;
+end;
+
+end.
