@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
+  Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, Vcl.Buttons;
 
 type
   TFCadAluno = class(TForm)
@@ -33,8 +33,6 @@ type
     Label8: TLabel;
     Label9: TLabel;
     DBEdit9: TDBEdit;
-    Label10: TLabel;
-    DBEdit10: TDBEdit;
     Label11: TLabel;
     DBEdit11: TDBEdit;
     Label12: TLabel;
@@ -53,6 +51,7 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure DSAlunosStateChange(Sender: TObject);
+    procedure BNovoEstadoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,6 +88,11 @@ end;
 procedure TFCadAluno.BNovoClick(Sender: TObject);
 begin
   DMConexao.FDQAlunos.Insert;
+end;
+
+procedure TFCadAluno.BNovoEstadoClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Insert;
 end;
 
 procedure TFCadAluno.BPesquisarClick(Sender: TObject);

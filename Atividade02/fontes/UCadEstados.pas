@@ -1,0 +1,113 @@
+unit UCadEstados;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB, Vcl.StdCtrls,
+  Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
+
+type
+  TFCadEstados = class(TForm)
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    DSEstado: TDataSource;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    PCEstados: TPageControl;
+    TCadastro: TTabSheet;
+    TConsulta: TTabSheet;
+    BNovo: TButton;
+    BSalvar: TButton;
+    BEditar: TButton;
+    BCancelar: TButton;
+    BExcluir: TButton;
+    PSQL: TPanel;
+    EPesquisar: TEdit;
+    BPesquisar: TButton;
+    DBGrid1: TDBGrid;
+    procedure BNovoClick(Sender: TObject);
+    procedure BEditarClick(Sender: TObject);
+    procedure BSalvarClick(Sender: TObject);
+    procedure BCancelarClick(Sender: TObject);
+    procedure BExcluirClick(Sender: TObject);
+    procedure DSEstadoStateChange(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure BPesquisarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadEstados: TFCadEstados;
+
+implementation
+
+{$R *.dfm}
+
+uses UDMConexao;
+
+procedure TFCadEstados.BCancelarClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Cancel;
+end;
+
+procedure TFCadEstados.BEditarClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Edit;
+end;
+
+procedure TFCadEstados.BExcluirClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Delete;
+end;
+
+procedure TFCadEstados.BNovoClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Insert;
+end;
+
+procedure TFCadEstados.BPesquisarClick(Sender: TObject);
+begin
+  with DMConexao do
+  begin
+    FDQEstados.Close;
+    FDQEstados.SQL.Clear;
+    FDQEstados.SQL.Add('Select * from cad_estados where sigla_uf like :parametro');
+    FDQEstados.SQL.Add('Or nm_estado like :parametro');
+    FDQEstados.ParamByName('Parametro').Value := '%' + EPesquisar.Text+'%';
+    FDQEstados.Open();
+
+  end;
+end;
+
+procedure TFCadEstados.BSalvarClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Post;
+end;
+
+procedure TFCadEstados.DBGrid1DblClick(Sender: TObject);
+begin
+  PCEstados.ActivePage := TCadastro;
+end;
+
+
+procedure TFCadEstados.DSEstadoStateChange(Sender: TObject);
+begin
+    BNovo.Enabled := DSEstado.State in [dsBrowse];
+    BSalvar.Enabled := DSEstado.State in [dsInsert, dsEdit];
+    BCancelar.Enabled := Bsalvar.Enabled;
+    BEditar.Enabled := (BNovo.Enabled) and (not(DMConexao.FDQEstados.IsEmpty));
+    BExcluir.Enabled := BEditar.Enabled;
+end;
+
+procedure TFCadEstados.FormActivate(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Open();
+  PCEstados.ActivePage := TCadastro;
+end;
+
+end.

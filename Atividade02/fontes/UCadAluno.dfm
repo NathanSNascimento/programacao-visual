@@ -19,13 +19,15 @@ object FCadAluno: TFCadAluno
     Top = 0
     Width = 558
     Height = 242
-    ActivePage = TCadastro
+    ActivePage = TConsulta
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 568
     object TCadastro: TTabSheet
       Caption = 'Cadastro'
-      ExplicitWidth = 560
+      ExplicitLeft = 8
+      ExplicitTop = 16
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label1: TLabel
         Left = 16
         Top = 23
@@ -72,14 +74,6 @@ object FCadAluno: TFCadAluno
         Height = 13
         Caption = 'Bairro'
         FocusControl = DBEdit9
-      end
-      object Label10: TLabel
-        Left = 285
-        Top = 69
-        Width = 37
-        Height = 13
-        Caption = 'Cidade:'
-        FocusControl = DBEdit10
       end
       object Label11: TLabel
         Left = 516
@@ -193,7 +187,6 @@ object FCadAluno: TFCadAluno
         Height = 21
         DataField = 'cpf'
         DataSource = DSAlunos
-        MaxLength = 14
         TabOrder = 8
       end
       object DBEdit7: TDBEdit
@@ -203,7 +196,6 @@ object FCadAluno: TFCadAluno
         Height = 21
         DataField = 'cep'
         DataSource = DSAlunos
-        MaxLength = 9
         TabOrder = 9
       end
       object DBEdit9: TDBEdit
@@ -215,15 +207,6 @@ object FCadAluno: TFCadAluno
         DataSource = DSAlunos
         TabOrder = 10
       end
-      object DBEdit10: TDBEdit
-        Left = 285
-        Top = 88
-        Width = 213
-        Height = 21
-        DataField = 'cidade'
-        DataSource = DSAlunos
-        TabOrder = 11
-      end
       object DBEdit11: TDBEdit
         Left = 516
         Top = 88
@@ -231,7 +214,7 @@ object FCadAluno: TFCadAluno
         Height = 21
         DataField = 'uf'
         DataSource = DSAlunos
-        TabOrder = 12
+        TabOrder = 11
       end
       object DBEdit8: TDBEdit
         Left = 435
@@ -240,8 +223,7 @@ object FCadAluno: TFCadAluno
         Height = 21
         DataField = 'cep'
         DataSource = DSAlunos
-        MaxLength = 9
-        TabOrder = 13
+        TabOrder = 12
       end
       object DBEdit5: TDBEdit
         Left = 136
@@ -251,7 +233,7 @@ object FCadAluno: TFCadAluno
         DataField = 'celular'
         DataSource = DSAlunos
         MaxLength = 15
-        TabOrder = 14
+        TabOrder = 13
       end
       object DBEdit6: TDBEdit
         Left = 16
@@ -261,13 +243,12 @@ object FCadAluno: TFCadAluno
         DataField = 'fone'
         DataSource = DSAlunos
         MaxLength = 14
-        TabOrder = 15
+        TabOrder = 14
       end
     end
     object TConsulta: TTabSheet
       Caption = 'Consulta'
       ImageIndex = 1
-      ExplicitWidth = 560
       object PSQL: TPanel
         Left = 3
         Top = 3
@@ -304,6 +285,70 @@ object FCadAluno: TFCadAluno
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnDblClick = DBGrid1DblClick
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'name'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'dt_nasc'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cpf'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cep'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'endereco'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'bairro'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cidade'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'uf'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'celular'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'fone'
+              Width = 64
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'id_cidade'
+              Visible = True
+            end>
         end
       end
     end
@@ -312,7 +357,7 @@ object FCadAluno: TFCadAluno
     AutoEdit = False
     DataSet = DMConexao.FDQAlunos
     OnStateChange = DSAlunosStateChange
-    Left = 232
-    Top = 144
+    Left = 512
+    Top = 24
   end
 end

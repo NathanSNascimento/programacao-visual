@@ -103,6 +103,14 @@
             <Form>FCadAluno</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UCadEstados.pas">
+            <Form>FCadEstados</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UCadCidades.pas">
+            <Form>FCadCidades</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

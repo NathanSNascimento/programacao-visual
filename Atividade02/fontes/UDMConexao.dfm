@@ -14,18 +14,17 @@ object DMConexao: TDMConexao
   end
   object FDDriverLink: TFDPhysPgDriverLink
     VendorHome = 
-      'C:\Users\nathan22\Dropbox\TADS\2019_1\Programa'#231#227'o Visual\Ativida' +
-      'des\Atividade02\fontes\Win32\Debug'
-    Left = 224
-    Top = 32
+      'C:\Users\nathan22\Documents\programacao-visual\Atividade02\fonte' +
+      's\Win32\Debug'
+    Left = 192
+    Top = 24
   end
   object FDQAlunos: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT * FROM CAD_ALUNO')
-    Left = 80
-    Top = 120
+    Left = 120
+    Top = 24
     object FDQAlunosid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
@@ -82,11 +81,60 @@ object DMConexao: TDMConexao
       EditMask = '(00) 0000-0000;1;'
       Size = 15
     end
+    object FDQAlunosid_cidade: TIntegerField
+      FieldName = 'id_cidade'
+      Origin = 'id_cidade'
+    end
   end
   object DSAlunos: TDataSource
     AutoEdit = False
     DataSet = FDQAlunos
-    Left = 232
-    Top = 144
+    Left = 264
+    Top = 24
+  end
+  object FDQEstados: TFDQuery
+    Active = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * FROM CAD_ESTADOS')
+    Left = 40
+    Top = 88
+    object FDQEstadosid_estado: TIntegerField
+      FieldName = 'id_estado'
+      Origin = 'id_estado'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQEstadossigla_uf: TWideStringField
+      FieldName = 'sigla_uf'
+      Origin = 'sigla_uf'
+      Size = 2
+    end
+    object FDQEstadosnm_estado: TWideStringField
+      FieldName = 'nm_estado'
+      Origin = 'nm_estado'
+      Size = 50
+    end
+  end
+  object FDQCidades: TFDQuery
+    Active = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * FROM CAD_CIDADES')
+    Left = 120
+    Top = 88
+    object FDQCidadesid_cidade: TIntegerField
+      FieldName = 'id_cidade'
+      Origin = 'id_cidade'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQCidadesid_estado: TIntegerField
+      FieldName = 'id_estado'
+      Origin = 'id_estado'
+    end
+    object FDQCidadesnm_cidade: TWideStringField
+      FieldName = 'nm_cidade'
+      Origin = 'nm_cidade'
+      Size = 100
+    end
   end
 end

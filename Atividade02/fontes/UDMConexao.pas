@@ -27,6 +27,15 @@ type
     FDQAlunosuf: TWideStringField;
     FDQAlunosfone: TWideStringField;
     FDQAlunoscelular: TWideStringField;
+    FDQAlunosid_cidade: TIntegerField;
+    FDQEstados: TFDQuery;
+    FDQEstadosid_estado: TIntegerField;
+    FDQEstadossigla_uf: TWideStringField;
+    FDQEstadosnm_estado: TWideStringField;
+    FDQCidades: TFDQuery;
+    FDQCidadesid_cidade: TIntegerField;
+    FDQCidadesid_estado: TIntegerField;
+    FDQCidadesnm_cidade: TWideStringField;
   private
     { Private declarations }
   public

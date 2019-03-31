@@ -27,16 +27,20 @@ type
     ESQL: TEdit;
     DBGrid1: TDBGrid;
     DBNavigator: TDBNavigator;
-    Button1: TButton;
+    BCadAluno: TButton;
     BConectar: TBitBtn;
     BDesconectar: TBitBtn;
     BExecutar: TBitBtn;
+    BCadEstado: TBitBtn;
+    BCadCidade: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BConectarClick(Sender: TObject);
     procedure BDesconectarClick(Sender: TObject);
     procedure BExecutarClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure BCadAlunoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure BCadEstadoClick(Sender: TObject);
+    procedure BCadCidadeClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,8 +54,18 @@ implementation
 
 {$R *.dfm}
 
-uses UDMConexao, UCadAluno;
+uses UDMConexao, UCadAluno, UCadEstados, UCadCidades;
 
+
+procedure TFConexao.BCadCidadeClick(Sender: TObject);
+begin
+  FCadCidades.show;
+end;
+
+procedure TFConexao.BCadEstadoClick(Sender: TObject);
+begin
+  FCadEstados.show;
+end;
 
 procedure TFConexao.BConectarClick(Sender: TObject);
 begin
@@ -103,7 +117,7 @@ begin
 
 end;
 
-procedure TFConexao.Button1Click(Sender: TObject);
+procedure TFConexao.BCadAlunoClick(Sender: TObject);
 begin
   FCadAluno.Show;
 end;
