@@ -168,7 +168,6 @@ object FCadCidades: TFCadCidades
             end
             item
               Expanded = False
-              FieldName = 'id_cidade'
               Visible = True
             end>
         end
@@ -183,7 +182,7 @@ object FCadCidades: TFCadCidades
   end
   object DSEstadoNome: TDataSource
     DataSet = DMConexao.FDQComboEstados
-    Left = 312
-    Top = 24
+    Left = 328
+    Top = 64
   end
 end

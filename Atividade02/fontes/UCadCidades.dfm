@@ -146,7 +146,7 @@ object FCadCidades: TFCadCidades
           OnClick = BPesquisarClick
         end
         object DBGrid1: TDBGrid
-          Left = -7
+          Left = 0
           Top = 41
           Width = 433
           Height = 120
@@ -162,12 +162,19 @@ object FCadCidades: TFCadCidades
           Columns = <
             item
               Expanded = False
-              FieldName = 'nm_cidade'
-              Title.Caption = 'Nome'
+              FieldName = 'id_cidade'
               Visible = True
             end
             item
               Expanded = False
+              FieldName = 'id_estado'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'nm_cidade'
+              Title.Caption = 'Cidade'
+              Width = 270
               Visible = True
             end>
         end
@@ -182,7 +189,7 @@ object FCadCidades: TFCadCidades
   end
   object DSEstadoNome: TDataSource
     DataSet = DMConexao.FDQComboEstados
-    Left = 328
-    Top = 64
+    Left = 312
+    Top = 24
   end
 end

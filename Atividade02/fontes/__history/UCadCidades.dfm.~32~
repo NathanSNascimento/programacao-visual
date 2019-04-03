@@ -19,7 +19,7 @@ object FCadCidades: TFCadCidades
     Top = 0
     Width = 445
     Height = 201
-    ActivePage = TCadastro
+    ActivePage = TConsulta
     Align = alClient
     TabOrder = 0
     object TCadastro: TTabSheet
@@ -35,7 +35,7 @@ object FCadCidades: TFCadCidades
       object Label2: TLabel
         Left = 25
         Top = 16
-        Width = 12
+        Width = 17
         Height = 13
         Caption = 'UF:'
       end
@@ -100,7 +100,8 @@ object FCadCidades: TFCadCidades
         Height = 21
         DataField = 'id_estado'
         DataSource = DSCidade
-        ListField = 'sigla_uf'
+        KeyField = 'id_estado'
+        ListField = 'sigla_nome'
         ListSource = DSEstadoNome
         TabOrder = 6
       end
@@ -114,6 +115,20 @@ object FCadCidades: TFCadCidades
         Width = 433
         Height = 169
         TabOrder = 0
+        object Label3: TLabel
+          Left = 160
+          Top = 72
+          Width = 37
+          Height = 13
+          Caption = 'sigla_uf'
+        end
+        object Label4: TLabel
+          Left = 128
+          Top = 128
+          Width = 53
+          Height = 13
+          Caption = 'sigla_nome'
+        end
         object EPesquisar: TEdit
           Left = 0
           Top = 14
@@ -131,7 +146,7 @@ object FCadCidades: TFCadCidades
           OnClick = BPesquisarClick
         end
         object DBGrid1: TDBGrid
-          Left = -7
+          Left = 0
           Top = 41
           Width = 433
           Height = 120
@@ -147,8 +162,19 @@ object FCadCidades: TFCadCidades
           Columns = <
             item
               Expanded = False
+              FieldName = 'id_cidade'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'id_estado'
+              Visible = True
+            end
+            item
+              Expanded = False
               FieldName = 'nm_cidade'
-              Title.Caption = 'Nome'
+              Title.Caption = 'Cidade'
+              Width = 200
               Visible = True
             end>
         end
@@ -158,12 +184,12 @@ object FCadCidades: TFCadCidades
   object DSCidade: TDataSource
     DataSet = DMConexao.FDQCidades
     OnStateChange = DSCidadeStateChange
-    Left = 400
-    Top = 24
+    Left = 384
+    Top = 72
   end
   object DSEstadoNome: TDataSource
-    DataSet = DMConexao.FDQEstados
-    Left = 264
-    Top = 64
+    DataSet = DMConexao.FDQComboEstados
+    Left = 312
+    Top = 24
   end
 end
