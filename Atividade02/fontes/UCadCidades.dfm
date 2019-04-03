@@ -25,16 +25,23 @@ object FCadCidades: TFCadCidades
     object TCadastro: TTabSheet
       Caption = 'Cadastro'
       object Label1: TLabel
-        Left = 27
-        Top = 24
-        Width = 31
+        Left = 19
+        Top = 64
+        Width = 37
         Height = 13
-        Caption = 'Nome:'
+        Caption = 'Cidade:'
         FocusControl = DBEdit1
+      end
+      object Label2: TLabel
+        Left = 25
+        Top = 16
+        Width = 17
+        Height = 13
+        Caption = 'UF:'
       end
       object BNovo: TButton
         Left = 3
-        Top = 105
+        Top = 129
         Width = 75
         Height = 25
         Caption = 'Novo'
@@ -43,7 +50,7 @@ object FCadCidades: TFCadCidades
       end
       object BSalvar: TButton
         Left = 180
-        Top = 105
+        Top = 129
         Width = 75
         Height = 25
         Caption = 'Salvar'
@@ -52,7 +59,7 @@ object FCadCidades: TFCadCidades
       end
       object BEditar: TButton
         Left = 92
-        Top = 105
+        Top = 129
         Width = 75
         Height = 25
         Caption = 'Editar'
@@ -61,7 +68,7 @@ object FCadCidades: TFCadCidades
       end
       object BCancelar: TButton
         Left = 261
-        Top = 105
+        Top = 129
         Width = 75
         Height = 25
         Caption = 'Cancelar'
@@ -70,7 +77,7 @@ object FCadCidades: TFCadCidades
       end
       object BExcluir: TButton
         Left = 354
-        Top = 105
+        Top = 129
         Width = 75
         Height = 25
         Caption = 'Excluir'
@@ -78,13 +85,25 @@ object FCadCidades: TFCadCidades
         OnClick = BExcluirClick
       end
       object DBEdit1: TDBEdit
-        Left = 27
-        Top = 43
-        Width = 350
+        Left = 19
+        Top = 83
+        Width = 198
         Height = 21
         DataField = 'nm_cidade'
         DataSource = DSCidade
         TabOrder = 5
+      end
+      object CBSigla: TDBLookupComboBox
+        Left = 19
+        Top = 37
+        Width = 145
+        Height = 21
+        DataField = 'id_estado'
+        DataSource = DSCidade
+        KeyField = 'id_estado'
+        ListField = 'sigla_nome'
+        ListSource = DSEstadoNome
+        TabOrder = 6
       end
     end
     object TConsulta: TTabSheet
@@ -96,6 +115,20 @@ object FCadCidades: TFCadCidades
         Width = 433
         Height = 169
         TabOrder = 0
+        object Label3: TLabel
+          Left = 160
+          Top = 72
+          Width = 37
+          Height = 13
+          Caption = 'sigla_uf'
+        end
+        object Label4: TLabel
+          Left = 128
+          Top = 128
+          Width = 53
+          Height = 13
+          Caption = 'sigla_nome'
+        end
         object EPesquisar: TEdit
           Left = 0
           Top = 14
@@ -132,6 +165,10 @@ object FCadCidades: TFCadCidades
               FieldName = 'nm_cidade'
               Title.Caption = 'Nome'
               Visible = True
+            end
+            item
+              Expanded = False
+              Visible = True
             end>
         end
       end
@@ -140,7 +177,12 @@ object FCadCidades: TFCadCidades
   object DSCidade: TDataSource
     DataSet = DMConexao.FDQCidades
     OnStateChange = DSCidadeStateChange
-    Left = 392
+    Left = 384
     Top = 72
+  end
+  object DSEstadoNome: TDataSource
+    DataSet = DMConexao.FDQComboEstados
+    Left = 328
+    Top = 64
   end
 end

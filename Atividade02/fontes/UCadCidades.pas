@@ -24,6 +24,11 @@ type
     DBGrid1: TDBGrid;
     Label1: TLabel;
     DBEdit1: TDBEdit;
+    CBSigla: TDBLookupComboBox;
+    Label2: TLabel;
+    DSEstadoNome: TDataSource;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure BNovoClick(Sender: TObject);
     procedure BEditarClick(Sender: TObject);
     procedure BSalvarClick(Sender: TObject);
@@ -103,6 +108,7 @@ end;
 procedure TFCadCidades.FormActivate(Sender: TObject);
 begin
   DMConexao.FDQCidades.Open();
+  DMConexao.FDQComboEstados.Open();
   PCCidades.ActivePage := TCadastro;
 end;
 

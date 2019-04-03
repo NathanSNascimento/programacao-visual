@@ -36,6 +36,12 @@ type
     FDQCidadesid_cidade: TIntegerField;
     FDQCidadesid_estado: TIntegerField;
     FDQCidadesnm_cidade: TWideStringField;
+    FDQComboEstados: TFDQuery;
+    FDQComboEstadosid_estado: TIntegerField;
+    FDQComboEstadossigla_uf: TWideStringField;
+    FDQComboEstadosnm_estado: TWideStringField;
+    FDQComboEstadossigla_nome: TStringField;
+    procedure FDQComboEstadosCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -52,5 +58,11 @@ implementation
 uses UCadAluno;
 
 {$R *.dfm}
+
+procedure TDMConexao.FDQComboEstadosCalcFields(DataSet: TDataSet);
+begin
+  FDQComboEstadossigla_nome.Value :=
+  FDQComboEstadossigla_uf.Value + ' - ' + FDQComboEstadosnm_estado.Value
+end;
 
 end.

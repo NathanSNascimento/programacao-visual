@@ -137,4 +137,33 @@ object DMConexao: TDMConexao
       Size = 100
     end
   end
+  object FDQComboEstados: TFDQuery
+    OnCalcFields = FDQComboEstadosCalcFields
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from cad_estados')
+    Left = 216
+    Top = 120
+    object FDQComboEstadosid_estado: TIntegerField
+      FieldName = 'id_estado'
+      Origin = 'id_estado'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQComboEstadossigla_uf: TWideStringField
+      FieldName = 'sigla_uf'
+      Origin = 'sigla_uf'
+      Size = 2
+    end
+    object FDQComboEstadosnm_estado: TWideStringField
+      FieldName = 'nm_estado'
+      Origin = 'nm_estado'
+      Size = 50
+    end
+    object FDQComboEstadossigla_nome: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'sigla_nome'
+      Size = 50
+      Calculated = True
+    end
+  end
 end
