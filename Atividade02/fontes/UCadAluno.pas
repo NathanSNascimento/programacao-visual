@@ -33,8 +33,6 @@ type
     Label8: TLabel;
     Label9: TLabel;
     DBEdit9: TDBEdit;
-    Label11: TLabel;
-    DBEdit11: TDBEdit;
     Label12: TLabel;
     DBEdit8: TDBEdit;
     Label5: TLabel;
@@ -42,6 +40,12 @@ type
     Label6: TLabel;
     DBEdit6: TDBEdit;
     DSAlunos: TDataSource;
+    Label7: TLabel;
+    Label10: TLabel;
+    DSEstados: TDataSource;
+    CBEstados: TDBLookupComboBox;
+    CBCidades: TDBLookupComboBox;
+    DSCidade: TDataSource;
     procedure BNovoClick(Sender: TObject);
     procedure BSalvarClick(Sender: TObject);
     procedure BEditarClick(Sender: TObject);
@@ -52,6 +56,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure DSAlunosStateChange(Sender: TObject);
     procedure BNovoEstadoClick(Sender: TObject);
+    procedure CBEstadosExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -113,6 +118,13 @@ begin
   DMConexao.FDQAlunos.Post;
 end;
 
+procedure TFCadAluno.CBEstadosExit(Sender: TObject);
+begin
+  DMConexao.FDQComboCidades.Close;
+  DMConexao.FDQComboCidades.ParamByName('pestado').Value := CBEstados.KeyValue;
+  DMConexao.FDQComboCidades.Open;
+end;
+
 procedure TFCadAluno.DBGrid1DblClick(Sender: TObject);
 begin
   PCAlunos.ActivePage := TCadastro;
@@ -141,6 +153,11 @@ begin
   end;
 
   PCAlunos.ActivePage := TCadastro;
+  DMConexao.FDQComboCidades.Close;
+  DMConexao.FDQComboCidades.ParamByName('pestado').Value := 0;
+  DMConexao.FDQComboCidades.Open;
+
+  DMConexao.FDQComboEstados.Open;
 
 end;
 

@@ -23,11 +23,28 @@ type
     FDQAlunoscep: TWideStringField;
     FDQAlunosendereco: TWideStringField;
     FDQAlunosbairro: TWideStringField;
-    FDQAlunoscidade: TWideStringField;
     FDQAlunosuf: TWideStringField;
     FDQAlunosfone: TWideStringField;
     FDQAlunoscelular: TWideStringField;
-    procedure DSAlunosStateChange(Sender: TObject);
+    FDQAlunosid_cidade: TIntegerField;
+    FDQEstados: TFDQuery;
+    FDQEstadosid_estado: TIntegerField;
+    FDQEstadossigla_uf: TWideStringField;
+    FDQEstadosnm_estado: TWideStringField;
+    FDQCidades: TFDQuery;
+    FDQCidadesid_cidade: TIntegerField;
+    FDQCidadesid_estado: TIntegerField;
+    FDQCidadesnm_cidade: TWideStringField;
+    FDQComboEstados: TFDQuery;
+    FDQComboEstadosid_estado: TIntegerField;
+    FDQComboEstadossigla_uf: TWideStringField;
+    FDQComboEstadosnm_estado: TWideStringField;
+    FDQComboEstadossigla_nome: TStringField;
+    FDQComboCidades: TFDQuery;
+    FDQComboCidadesid_cidade: TIntegerField;
+    FDQComboCidadesid_estado: TIntegerField;
+    FDQComboCidadesnm_cidade: TWideStringField;
+    procedure FDQComboEstadosCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -45,16 +62,10 @@ uses UCadAluno;
 
 {$R *.dfm}
 
-procedure TDMConexao.DSAlunosStateChange(Sender: TObject);
+procedure TDMConexao.FDQComboEstadosCalcFields(DataSet: TDataSet);
 begin
-  with FcadAluno do
-  begin
-    BNovo.Enabled := DSAlunos.State in [dsBrowse];
-    BSalvar.Enabled := DSAlunos.State in [dsInsert, dsEdit];
-    BCancelar.Enabled := Bsalvar.Enabled;
-    BEditar.Enabled := (BNovo.Enabled) and (not(FDQAlunos.IsEmpty));
-    BExcluir.Enabled := BEditar.Enabled;
-  end;
+  FDQComboEstadossigla_nome.Value :=
+  FDQComboEstadossigla_uf.Value + ' - ' + FDQComboEstadosnm_estado.Value
 end;
 
 end.

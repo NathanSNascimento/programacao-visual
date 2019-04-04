@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
+  Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, Vcl.Buttons;
 
 type
   TFCadAluno = class(TForm)
@@ -42,6 +42,12 @@ type
     Label6: TLabel;
     DBEdit6: TDBEdit;
     DSAlunos: TDataSource;
+    Label7: TLabel;
+    Label10: TLabel;
+    DSEstados: TDataSource;
+    CBEstados: TDBLookupComboBox;
+    CBCidades: TDBLookupComboBox;
+    DSCidade: TDataSource;
     procedure BNovoClick(Sender: TObject);
     procedure BSalvarClick(Sender: TObject);
     procedure BEditarClick(Sender: TObject);
@@ -51,6 +57,7 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure DSAlunosStateChange(Sender: TObject);
+    procedure BNovoEstadoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -87,6 +94,11 @@ end;
 procedure TFCadAluno.BNovoClick(Sender: TObject);
 begin
   DMConexao.FDQAlunos.Insert;
+end;
+
+procedure TFCadAluno.BNovoEstadoClick(Sender: TObject);
+begin
+  DMConexao.FDQEstados.Insert;
 end;
 
 procedure TFCadAluno.BPesquisarClick(Sender: TObject);
@@ -135,6 +147,8 @@ begin
   end;
 
   PCAlunos.ActivePage := TCadastro;
+  DMConexao.FDQComboCidades.Close;
+  DMConexao.FDQComboCidades.ParamByName('pestado')
 
 end;
 

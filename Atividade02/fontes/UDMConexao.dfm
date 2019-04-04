@@ -59,16 +59,6 @@ object DMConexao: TDMConexao
       FieldName = 'bairro'
       Origin = 'bairro'
     end
-    object FDQAlunoscidade: TWideStringField
-      FieldName = 'cidade'
-      Origin = 'cidade'
-      Size = 30
-    end
-    object FDQAlunosuf: TWideStringField
-      FieldName = 'uf'
-      Origin = 'uf'
-      Size = 2
-    end
     object FDQAlunoscelular: TWideStringField
       FieldName = 'celular'
       Origin = 'celular'
@@ -138,12 +128,13 @@ object DMConexao: TDMConexao
     end
   end
   object FDQComboEstados: TFDQuery
+    Active = True
     OnCalcFields = FDQComboEstadosCalcFields
     Connection = FDConnection
     SQL.Strings = (
       'select * from cad_estados')
-    Left = 216
-    Top = 120
+    Left = 192
+    Top = 88
     object FDQComboEstadosid_estado: TIntegerField
       FieldName = 'id_estado'
       Origin = 'id_estado'
@@ -164,6 +155,34 @@ object DMConexao: TDMConexao
       FieldName = 'sigla_nome'
       Size = 50
       Calculated = True
+    end
+  end
+  object FDQComboCidades: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from cad_cidades where id_estado = :pestado')
+    Left = 264
+    Top = 88
+    ParamData = <
+      item
+        Name = 'PESTADO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object FDQComboCidadesid_cidade: TIntegerField
+      FieldName = 'id_cidade'
+      Origin = 'id_cidade'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQComboCidadesid_estado: TIntegerField
+      FieldName = 'id_estado'
+      Origin = 'id_estado'
+    end
+    object FDQComboCidadesnm_cidade: TWideStringField
+      FieldName = 'nm_cidade'
+      Origin = 'nm_cidade'
+      Size = 100
     end
   end
 end

@@ -2,8 +2,8 @@ object FCadAluno: TFCadAluno
   Left = 0
   Top = 0
   Caption = 'Cadastro de Alunos'
-  ClientHeight = 242
-  ClientWidth = 558
+  ClientHeight = 262
+  ClientWidth = 587
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,13 +17,17 @@ object FCadAluno: TFCadAluno
   object PCAlunos: TPageControl
     Left = 0
     Top = 0
-    Width = 558
-    Height = 242
-    ActivePage = TEstado
+    Width = 587
+    Height = 262
+    ActivePage = TCadastro
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 558
+    ExplicitHeight = 242
     object TCadastro: TTabSheet
       Caption = 'Cadastro'
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object Label1: TLabel
         Left = 16
         Top = 23
@@ -57,14 +61,14 @@ object FCadAluno: TFCadAluno
         FocusControl = DBEdit4
       end
       object Label8: TLabel
-        Left = 16
+        Left = 75
         Top = 115
         Width = 49
         Height = 13
         Caption = 'Endere'#231'o:'
       end
       object Label9: TLabel
-        Left = 221
+        Left = 250
         Top = 115
         Width = 28
         Height = 13
@@ -72,8 +76,8 @@ object FCadAluno: TFCadAluno
         FocusControl = DBEdit9
       end
       object Label11: TLabel
-        Left = 516
-        Top = 69
+        Left = 16
+        Top = 115
         Width = 17
         Height = 13
         Caption = 'UF:'
@@ -102,6 +106,22 @@ object FCadAluno: TFCadAluno
         Height = 13
         Caption = 'Fone:'
         FocusControl = DBEdit6
+      end
+      object Label7: TLabel
+        Left = 266
+        Top = 69
+        Width = 33
+        Height = 13
+        Caption = 'Estado'
+        FocusControl = DBEdit5
+      end
+      object Label10: TLabel
+        Left = 406
+        Top = 69
+        Width = 37
+        Height = 13
+        Caption = 'Cidade:'
+        FocusControl = DBEdit5
       end
       object BNovo: TButton
         Left = 14
@@ -186,26 +206,26 @@ object FCadAluno: TFCadAluno
         TabOrder = 8
       end
       object DBEdit7: TDBEdit
-        Left = 16
+        Left = 75
         Top = 134
-        Width = 188
+        Width = 169
         Height = 21
         DataField = 'cep'
         DataSource = DSAlunos
         TabOrder = 9
       end
       object DBEdit9: TDBEdit
-        Left = 221
+        Left = 250
         Top = 134
-        Width = 196
+        Width = 179
         Height = 21
         DataField = 'bairro'
         DataSource = DSAlunos
         TabOrder = 10
       end
       object DBEdit11: TDBEdit
-        Left = 516
-        Top = 88
+        Left = 16
+        Top = 134
         Width = 30
         Height = 21
         DataField = 'uf'
@@ -241,10 +261,34 @@ object FCadAluno: TFCadAluno
         MaxLength = 14
         TabOrder = 14
       end
+      object CBEstados: TDBLookupComboBox
+        Left = 266
+        Top = 88
+        Width = 134
+        Height = 21
+        KeyField = 'id_estado'
+        ListField = 'sigla_nome'
+        ListSource = DSEstados
+        TabOrder = 15
+      end
+      object CBCidades: TDBLookupComboBox
+        Left = 406
+        Top = 88
+        Width = 140
+        Height = 21
+        DataField = 'id_cidade'
+        DataSource = DSAlunos
+        KeyField = 'id_cidade'
+        ListField = 'nm_cidade'
+        ListSource = DSCidade
+        TabOrder = 16
+      end
     end
     object TConsulta: TTabSheet
       Caption = 'Consulta'
       ImageIndex = 1
+      ExplicitWidth = 550
+      ExplicitHeight = 214
       object PSQL: TPanel
         Left = 3
         Top = 3
@@ -268,8 +312,8 @@ object FCadAluno: TFCadAluno
           OnClick = BPesquisarClick
         end
         object DBGrid1: TDBGrid
-          Left = 0
-          Top = 47
+          Left = -7
+          Top = 63
           Width = 433
           Height = 162
           DataSource = DMConexao.DSAlunos
@@ -281,79 +325,69 @@ object FCadAluno: TFCadAluno
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnDblClick = DBGrid1DblClick
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'name'
+              Title.Caption = 'Nome'
+              Width = 200
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'dt_nasc'
+              Title.Caption = 'Data Nascimento'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cpf'
+              Title.Caption = 'C.P.F.'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cep'
+              Title.Caption = 'CEP'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'endereco'
+              Title.Caption = 'Endere'#231'o'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'bairro'
+              Title.Caption = 'Bairro'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'uf'
+              Title.Caption = 'UF'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'celular'
+              Title.Caption = 'Celular'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'fone'
+              Title.Caption = 'Telefone'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'id_cidade'
+              Title.Caption = 'Cidade'
+              Visible = True
+            end>
         end
-      end
-    end
-    object TEstado: TTabSheet
-      Caption = 'Cadastro Estado'
-      ImageIndex = 2
-      object Label7: TLabel
-        Left = 48
-        Top = 24
-        Width = 15
-        Height = 13
-        Caption = 'ID:'
-        FocusControl = DBEdit10
-      end
-      object Label10: TLabel
-        Left = 46
-        Top = 99
-        Width = 17
-        Height = 13
-        Caption = 'UF:'
-        FocusControl = DBEdit12
-      end
-      object Label13: TLabel
-        Left = 32
-        Top = 64
-        Width = 31
-        Height = 13
-        Caption = 'Nome:'
-        FocusControl = DBEdit13
-      end
-      object DBEdit10: TDBEdit
-        Left = 69
-        Top = 21
-        Width = 134
-        Height = 21
-        DataField = 'id_estado'
-        DataSource = DataSource1
-        TabOrder = 0
-      end
-      object DBEdit12: TDBEdit
-        Left = 69
-        Top = 96
-        Width = 30
-        Height = 21
-        DataField = 'sigla_uf'
-        DataSource = DataSource1
-        TabOrder = 1
-      end
-      object DBEdit13: TDBEdit
-        Left = 69
-        Top = 61
-        Width = 300
-        Height = 21
-        DataField = 'nm_estado'
-        DataSource = DataSource1
-        TabOrder = 2
-      end
-      object BNovoEstado: TBitBtn
-        Left = 46
-        Top = 152
-        Width = 75
-        Height = 25
-        Caption = 'Novo'
-        TabOrder = 3
-        OnClick = BNovoEstadoClick
-      end
-      object BCancelarEstado: TBitBtn
-        Left = 136
-        Top = 152
-        Width = 75
-        Height = 25
-        Caption = 'Cancelar'
-        TabOrder = 4
       end
     end
   end
@@ -361,12 +395,17 @@ object FCadAluno: TFCadAluno
     AutoEdit = False
     DataSet = DMConexao.FDQAlunos
     OnStateChange = DSAlunosStateChange
-    Left = 512
+    Left = 528
+    Top = 32
+  end
+  object DSEstados: TDataSource
+    DataSet = DMConexao.FDQComboEstados
+    Left = 440
     Top = 24
   end
-  object DataSource1: TDataSource
-    DataSet = DMConexao.FDQEstados
-    Left = 512
-    Top = 88
+  object DSCidade: TDataSource
+    DataSet = DMConexao.FDQComboCidades
+    Left = 335
+    Top = 27
   end
 end

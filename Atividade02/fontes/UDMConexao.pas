@@ -23,8 +23,6 @@ type
     FDQAlunoscep: TWideStringField;
     FDQAlunosendereco: TWideStringField;
     FDQAlunosbairro: TWideStringField;
-    FDQAlunoscidade: TWideStringField;
-    FDQAlunosuf: TWideStringField;
     FDQAlunosfone: TWideStringField;
     FDQAlunoscelular: TWideStringField;
     FDQAlunosid_cidade: TIntegerField;
@@ -41,6 +39,10 @@ type
     FDQComboEstadossigla_uf: TWideStringField;
     FDQComboEstadosnm_estado: TWideStringField;
     FDQComboEstadossigla_nome: TStringField;
+    FDQComboCidades: TFDQuery;
+    FDQComboCidadesid_cidade: TIntegerField;
+    FDQComboCidadesid_estado: TIntegerField;
+    FDQComboCidadesnm_cidade: TWideStringField;
     procedure FDQComboEstadosCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
