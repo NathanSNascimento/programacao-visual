@@ -1,0 +1,36 @@
+object DMConnMarca: TDMConnMarca
+  OldCreateOrder = False
+  Height = 228
+  Width = 348
+  object FDQMarcas: TFDQuery
+    Active = True
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from cad_marcas')
+    Left = 48
+    Top = 48
+    object FDQMarcasid_marcas: TIntegerField
+      FieldName = 'id_marcas'
+      Origin = 'id_marcas'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQMarcasnm_marcas: TWideStringField
+      FieldName = 'nm_marcas'
+      Origin = 'nm_marcas'
+      Size = 100
+    end
+  end
+  object DSMarcas: TDataSource
+    DataSet = FDQMarcas
+    Left = 168
+    Top = 48
+  end
+  object FDQComboMarcas: TFDQuery
+    Active = True
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from cad_marcas')
+    Left = 80
+    Top = 144
+  end
+end

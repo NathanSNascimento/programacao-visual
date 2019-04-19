@@ -1,0 +1,72 @@
+unit UCadMarca;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Mask, Vcl.DBCtrls, Data.DB;
+
+type
+  TFCadMarcas = class(TForm)
+    PCMarcas: TPageControl;
+    TCadastro: TTabSheet;
+    TConsulta: TTabSheet;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    BNovo: TBitBtn;
+    BEditar: TBitBtn;
+    BSalvar: TBitBtn;
+    BCancelar: TBitBtn;
+    BExcluir: TBitBtn;
+    DSMarcas: TDataSource;
+    EPesquisar: TEdit;
+    BPesquisar: TBitBtn;
+    procedure BNovoClick(Sender: TObject);
+    procedure BEditarClick(Sender: TObject);
+    procedure BSalvarClick(Sender: TObject);
+    procedure BCancelarClick(Sender: TObject);
+    procedure BExcluirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadMarcas: TFCadMarcas;
+
+implementation
+
+{$R *.dfm}
+
+uses UDMConMarcas;
+
+procedure TFCadMarcas.BCancelarClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Cancel;
+end;
+
+procedure TFCadMarcas.BEditarClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Edit;
+end;
+
+procedure TFCadMarcas.BExcluirClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Delete;
+end;
+
+procedure TFCadMarcas.BNovoClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Insert;
+end;
+
+procedure TFCadMarcas.BSalvarClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Post;
+end;
+
+end.

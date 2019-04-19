@@ -1,0 +1,124 @@
+unit UCadMarca;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Mask, Vcl.DBCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFCadMarcas = class(TForm)
+    PCMarcas: TPageControl;
+    TCadastro: TTabSheet;
+    TConsulta: TTabSheet;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    BNovo: TBitBtn;
+    BEditar: TBitBtn;
+    BSalvar: TBitBtn;
+    BCancelar: TBitBtn;
+    BExcluir: TBitBtn;
+    DSMarcas: TDataSource;
+    EPesquisar: TEdit;
+    BPesquisar: TBitBtn;
+    DBGrid1: TDBGrid;
+    procedure BNovoClick(Sender: TObject);
+    procedure BEditarClick(Sender: TObject);
+    procedure BSalvarClick(Sender: TObject);
+    procedure BCancelarClick(Sender: TObject);
+    procedure BExcluirClick(Sender: TObject);
+    procedure DSMarcasStateChange(Sender: TObject);
+    procedure BPesquisarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadMarcas: TFCadMarcas;
+
+implementation
+
+{$R *.dfm}
+
+uses UDMConMarcas, UDMConexao;
+
+procedure TFCadMarcas.BCancelarClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Cancel;
+end;
+
+procedure TFCadMarcas.BEditarClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Edit;
+end;
+
+procedure TFCadMarcas.BExcluirClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Delete;
+end;
+
+procedure TFCadMarcas.BNovoClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Insert;
+end;
+
+procedure TFCadMarcas.BPesquisarClick(Sender: TObject);
+begin
+  with DMConnMarca do
+  begin
+    FDQMarcas.Close;
+    FDQMarcas.SQL.Clear;
+    FDQMarcas.SQL.Add('select * from cad_marcas where nm_marcas like :Pmarca ');
+    FDQMarcas.ParamByName('Pmarca').Value := '%' + EPesquisar.Text + '%';
+    FDQMarcas.Open;
+
+  end;
+end;
+
+procedure TFCadMarcas.BSalvarClick(Sender: TObject);
+begin
+  DMConnMarca.FDQMarcas.Post;
+end;
+
+procedure TFCadMarcas.DBGrid1DblClick(Sender: TObject);
+begin
+  PCMarcas.ActivePage := TCadastro;
+end;
+
+procedure TFCadMarcas.DSMarcasStateChange(Sender: TObject);
+begin
+  BNovo.Enabled := DSMarcas.State in [dsBrowse];
+  BSalvar.Enabled := DSMarcas.State in [dsInsert, dsEdit];
+  BCancelar.Enabled := Bsalvar.Enabled;
+  BEditar.Enabled := (BNovo.Enabled) and (not(DMConnMarca.FDQMarcas.IsEmpty));
+  BExcluir.Enabled := BEditar.Enabled;
+end;
+
+procedure TFCadMarcas.FormActivate(Sender: TObject);
+begin
+  with DMConnMarca do
+  begin
+    FDQMarcas.Close;
+    FDQMarcas.SQL.Clear;
+    FDQMarcas.SQL.Add('SELECT * FROM CAD_MARCAS WHERE ID_MARCAS = :Pid')
+    FDQMArcas.ParamByName('pid').Value := 0;
+  end;
+
+  PCMarcas.ActivePage := TCadastro;
+end;
+
+procedure TFCadMarcas.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FCadMarcas.Destroy;
+  DMConnMarca.Destroy;
+end;
+
+end.

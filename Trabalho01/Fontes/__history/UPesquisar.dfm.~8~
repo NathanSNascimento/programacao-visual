@@ -1,0 +1,69 @@
+object FPesquisa: TFPesquisa
+  Left = 0
+  Top = 0
+  Caption = 'Pesquisar'
+  ClientHeight = 211
+  ClientWidth = 447
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PCPesquisa: TPageControl
+    Left = 0
+    Top = 0
+    Width = 447
+    Height = 211
+    ActivePage = TPesquisar
+    Align = alClient
+    TabOrder = 0
+    object TPesquisar: TTabSheet
+      Caption = 'Pesquisar'
+      object LResultados: TLabel
+        Left = 24
+        Top = 164
+        Width = 66
+        Height = 13
+        Caption = 'Resultados: 0'
+      end
+      object EPesquisar: TEdit
+        Left = 24
+        Top = 7
+        Width = 297
+        Height = 21
+        TabOrder = 0
+      end
+      object DBGrid1: TDBGrid
+        Left = 24
+        Top = 34
+        Width = 403
+        Height = 126
+        DataSource = DSSearch
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+      end
+      object BPesquisar: TBitBtn
+        Left = 336
+        Top = 7
+        Width = 91
+        Height = 25
+        Caption = 'Pesquisar'
+        TabOrder = 2
+        OnClick = BPesquisarClick
+      end
+    end
+  end
+  object DSSearch: TDataSource
+    DataSet = DMPesquisa.FDQPesquisa
+    Left = 392
+    Top = 64
+  end
+end

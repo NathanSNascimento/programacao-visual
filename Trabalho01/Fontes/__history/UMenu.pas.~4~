@@ -1,0 +1,35 @@
+unit UMenu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFMenu = class(TForm)
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FMenu: TFMenu;
+
+implementation
+
+{$R *.dfm}
+
+uses UCadCarros, UCadCores, UCadMarca, UDMConCor, UDMConexao, UDMConMarcas;
+
+procedure TFMenu.BitBtn1Click(Sender: TObject);
+begin
+  FCadCarros.Enabled;
+end;
+
+end.

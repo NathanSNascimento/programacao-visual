@@ -1,0 +1,10 @@
+object DMConnMarca: TDMConnMarca
+  OldCreateOrder = False
+  Height = 228
+  Width = 348
+  object FDQuery1: TFDQuery
+    Connection = DMConexao.FDConexao
+    Left = 48
+    Top = 48
+  end
+end

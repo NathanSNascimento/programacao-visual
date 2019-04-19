@@ -1,0 +1,20 @@
+program PTrabalho;
+
+uses
+  Vcl.Forms,
+  UCadCarros in 'UCadCarros.pas' {FCadCarros},
+  UDMConexao in 'UDMConexao.pas' {DMConexao: TDataModule},
+  UDMConCor in 'UDMConCor.pas' {DMConnCor: TDataModule},
+  UCadCores in 'UCadCores.pas' {FCadCores};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDMConexao, DMConexao);
+  Application.CreateForm(TFCadCarros, FCadCarros);
+  Application.CreateForm(TDMConnCor, DMConnCor);
+  Application.CreateForm(TFCadCores, FCadCores);
+  Application.Run;
+end.

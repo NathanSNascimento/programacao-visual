@@ -1,0 +1,300 @@
+object FCadCarros: TFCadCarros
+  Left = 0
+  Top = 0
+  ActiveControl = PCCarros
+  Caption = 'FCadCarros'
+  ClientHeight = 239
+  ClientWidth = 452
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PCCarros: TPageControl
+    Left = 0
+    Top = -1
+    Width = 449
+    Height = 241
+    ActivePage = TCadastro
+    TabOrder = 0
+    object TCadastro: TTabSheet
+      Caption = 'Cadastro'
+      object Label1: TLabel
+        Left = 7
+        Top = 5
+        Width = 50
+        Height = 13
+        Caption = 'N'#186' Chassi:'
+        FocusControl = DBEdit1
+      end
+      object Label2: TLabel
+        Left = 155
+        Top = 3
+        Width = 33
+        Height = 13
+        Caption = 'Marca:'
+      end
+      object Label3: TLabel
+        Left = 299
+        Top = 5
+        Width = 21
+        Height = 13
+        Caption = 'Cor:'
+      end
+      object Label4: TLabel
+        Left = 7
+        Top = 47
+        Width = 38
+        Height = 13
+        Caption = 'Modelo:'
+        FocusControl = DBEdit4
+      end
+      object Label5: TLabel
+        Left = 215
+        Top = 47
+        Width = 94
+        Height = 13
+        Caption = 'Quantidade Portas:'
+        FocusControl = DBEdit5
+      end
+      object Label6: TLabel
+        Left = 368
+        Top = 47
+        Width = 23
+        Height = 13
+        Caption = 'Ano:'
+        FocusControl = DBEdit6
+      end
+      object Label7: TLabel
+        Left = 7
+        Top = 88
+        Width = 50
+        Height = 13
+        Caption = 'Descri'#231#227'o:'
+        FocusControl = DBEdit7
+      end
+      object BNovo: TBitBtn
+        Left = 7
+        Top = 166
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
+        TabOrder = 0
+        OnClick = BNovoClick
+      end
+      object BEditar: TBitBtn
+        Left = 92
+        Top = 166
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
+        TabOrder = 1
+        OnClick = BEditarClick
+      end
+      object BSalvar: TBitBtn
+        Left = 182
+        Top = 166
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
+        TabOrder = 2
+        OnClick = BSalvarClick
+      end
+      object BCancelar: TBitBtn
+        Left = 271
+        Top = 166
+        Width = 75
+        Height = 25
+        Caption = 'Cancelar'
+        TabOrder = 3
+        OnClick = BCancelarClick
+      end
+      object BExcluir: TBitBtn
+        Left = 358
+        Top = 166
+        Width = 75
+        Height = 25
+        Caption = 'Excluir'
+        TabOrder = 4
+        OnClick = BExcluirClick
+      end
+      object DBEdit1: TDBEdit
+        Left = 7
+        Top = 21
+        Width = 134
+        Height = 21
+        DataField = 'nr_chassi'
+        DataSource = DMConexao.DSCarros
+        TabOrder = 5
+      end
+      object DBEdit4: TDBEdit
+        Left = 7
+        Top = 61
+        Width = 182
+        Height = 21
+        DataField = 'modelo'
+        DataSource = DMConexao.DSCarros
+        TabOrder = 6
+      end
+      object DBEdit5: TDBEdit
+        Left = 215
+        Top = 61
+        Width = 131
+        Height = 21
+        DataField = 'qtde_portas'
+        DataSource = DMConexao.DSCarros
+        TabOrder = 7
+      end
+      object DBEdit6: TDBEdit
+        Left = 368
+        Top = 61
+        Width = 65
+        Height = 21
+        DataField = 'ano'
+        DataSource = DMConexao.DSCarros
+        TabOrder = 8
+      end
+      object DBEdit7: TDBEdit
+        Left = 7
+        Top = 106
+        Width = 426
+        Height = 21
+        DataField = 'descricao'
+        DataSource = DMConexao.DSCarros
+        TabOrder = 9
+      end
+      object CBMarca: TDBLookupComboBox
+        Left = 155
+        Top = 20
+        Width = 118
+        Height = 21
+        DataField = 'id_marca'
+        DataSource = DMConexao.DSCarros
+        KeyField = 'id_marcas'
+        ListField = 'nm_marcas'
+        ListSource = DSMarca
+        TabOrder = 10
+      end
+      object CBCores: TDBLookupComboBox
+        Left = 304
+        Top = 20
+        Width = 134
+        Height = 21
+        DataField = 'id_cor'
+        DataSource = DMConexao.DSCarros
+        KeyField = 'id_cor'
+        ListField = 'nm_cor'
+        ListSource = DSCores
+        TabOrder = 11
+      end
+    end
+    object TConsulta: TTabSheet
+      Caption = 'Consulta'
+      ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object EPesquisar: TEdit
+        Left = 19
+        Top = 16
+        Width = 294
+        Height = 21
+        TabOrder = 0
+      end
+      object BBuscar: TBitBtn
+        Left = 328
+        Top = 12
+        Width = 99
+        Height = 25
+        Caption = 'Buscar'
+        TabOrder = 1
+        OnClick = BBuscarClick
+      end
+      object DBGrid1: TDBGrid
+        Left = 19
+        Top = 43
+        Width = 408
+        Height = 167
+        DataSource = DSCarros
+        TabOrder = 2
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = DBGrid1DblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'nr_chassi'
+            Title.Caption = 'Chassi'
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'id_marca'
+            Title.Caption = 'Marca'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'id_cor'
+            Title.Caption = 'Cor'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'modelo'
+            Title.Caption = 'Modelo'
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'qtde_portas'
+            Title.Caption = 'Portas'
+            Width = 45
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ano'
+            Title.Caption = 'Ano'
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'descricao'
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 150
+            Visible = True
+          end>
+      end
+    end
+  end
+  object DSCarros: TDataSource
+    DataSet = DMConexao.FDQCarros
+    OnStateChange = DSCarrosStateChange
+    Left = 372
+    Top = 143
+  end
+  object DSMarca: TDataSource
+    DataSet = DMConnMarca.FDQComboMarcas
+    Left = 244
+    Top = 151
+  end
+  object DSCores: TDataSource
+    DataSet = DMConnCor.FDQComboCores
+    Left = 300
+    Top = 151
+  end
+end

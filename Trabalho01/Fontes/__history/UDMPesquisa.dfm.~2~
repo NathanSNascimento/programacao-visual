@@ -1,0 +1,10 @@
+object DMPesquisa: TDMPesquisa
+  OldCreateOrder = False
+  Height = 208
+  Width = 325
+  object FDQPesquisa: TFDQuery
+    Connection = DMConexao.FDConexao
+    Left = 120
+    Top = 88
+  end
+end

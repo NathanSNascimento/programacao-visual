@@ -1,0 +1,37 @@
+object DMConnCor: TDMConnCor
+  OldCreateOrder = False
+  Height = 192
+  Width = 336
+  object FDCorConn: TFDConnection
+    Params.Strings = (
+      'Database=Trabalho1'
+      'User_Name=postgres'
+      'Password=admin'
+      'DriverID=PG')
+    Connected = True
+    Left = 32
+    Top = 32
+  end
+  object FDQCores: TFDQuery
+    Active = True
+    Connection = FDCorConn
+    SQL.Strings = (
+      'select * from cad_cores')
+    Left = 104
+    Top = 32
+    object FDQCoresid_cor: TIntegerField
+      FieldName = 'id_cor'
+      Origin = 'id_cor'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQCoresnm_cor: TWideStringField
+      FieldName = 'nm_cor'
+      Origin = 'nm_cor'
+      Size = 50
+    end
+  end
+  object DSCores: TDataSource
+    Left = 200
+    Top = 32
+  end
+end

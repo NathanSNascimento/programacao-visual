@@ -1,0 +1,95 @@
+unit UCadCores;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFCadCores = class(TForm)
+    DSCores: TDataSource;
+    PCCores: TPageControl;
+    TCadastro: TTabSheet;
+    TConsulta: TTabSheet;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    BNovo: TBitBtn;
+    BEditar: TBitBtn;
+    BSalvar: TBitBtn;
+    BCancelar: TBitBtn;
+    BExcluir: TBitBtn;
+    EPesquisar: TEdit;
+    BPesquisar: TBitBtn;
+    DBGrid1: TDBGrid;
+    procedure BNovoClick(Sender: TObject);
+    procedure BEditarClick(Sender: TObject);
+    procedure BSalvarClick(Sender: TObject);
+    procedure BCancelarClick(Sender: TObject);
+    procedure BExcluirClick(Sender: TObject);
+    procedure DSCoresStateChange(Sender: TObject);
+    procedure BPesquisarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadCores: TFCadCores;
+
+implementation
+
+{$R *.dfm}
+
+uses UDMConCor;
+
+procedure TFCadCores.BCancelarClick(Sender: TObject);
+begin
+  DMConnCor.FDQCores.Cancel;
+end;
+
+procedure TFCadCores.BEditarClick(Sender: TObject);
+begin
+  DMConnCor.FDQCores.Edit;
+end;
+
+procedure TFCadCores.BExcluirClick(Sender: TObject);
+begin
+  DMConnCor.FDQCores.Delete;
+end;
+
+procedure TFCadCores.BNovoClick(Sender: TObject);
+begin
+  DMConnCor.FDQCores.Insert;
+end;
+
+procedure TFCadCores.BPesquisarClick(Sender: TObject);
+begin
+  with DMConnCor do
+  begin
+    FDQCores.Close;
+    FDQCores.SQL.Clear;
+    FDQCores.SQL.Add('select * from cad_cores where nm_cor lik :Pcor ');
+    FDQCores.ParamByName('Pcor').Value := '%' + EPesquisar.Text + '%';
+  end;
+end;
+
+procedure TFCadCores.BSalvarClick(Sender: TObject);
+begin
+  DMConnCor.FDQCores.Post;
+end;
+
+procedure TFCadCores.DSCoresStateChange(Sender: TObject);
+begin
+  BNovo.Enabled := DSCores.State in [dsBrowse];
+  BSalvar.Enabled := DSCores.State in [dsInsert, dsEdit];
+  BCancelar.Enabled := Bsalvar.Enabled;
+  BEditar.Enabled := (BNovo.Enabled) and (not(DMConnCor.FDQCores.IsEmpty));
+  BExcluir.Enabled := BEditar.Enabled;
+end;
+
+end.
