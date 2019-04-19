@@ -1,0 +1,55 @@
+unit UEx01;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    Panel1: TPanel;
+    ENome: TEdit;
+    EHoras: TEdit;
+    EDep: TEdit;
+    BCalcular: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    procedure BCalcularClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  VNome: String;
+  VHoras: Integer;
+  VDep: Integer;
+  salBruto: Integer;
+  salLiquido: Double;
+  desc: Double;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.BCalcularClick(Sender: TObject);
+begin
+
+    Vnome:= ENome.Text;
+    Vhoras:= StrToInt(EHoras.Text);
+    VDep:= StrToInt(EDep.Text);
+
+    salBruto:= ((Vhoras * 12) + (vDep * 40));
+    desc = 8.5 + 5.0;
+
+    salLiquido:= salBruto - desc;
+
+    ShowMessage('Funcionario ' + Vnome + 'receberá: ' + salLiquido + ' reais');
+
+end;
+
+end.

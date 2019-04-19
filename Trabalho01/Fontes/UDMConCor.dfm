@@ -26,7 +26,6 @@ object DMConnCor: TDMConnCor
     Top = 56
   end
   object FDQComboCores: TFDQuery
-    Active = True
     Connection = DMConexao.FDConexao
     SQL.Strings = (
       'select * from cad_cores')

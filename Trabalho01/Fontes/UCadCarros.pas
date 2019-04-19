@@ -128,6 +128,7 @@ begin
   PCCarros.ActivePage:= TCadastro;
   DMConexao.FDQComboCor.Open();
   DMConnMarca.FDQComboMarcas.Open();
+  DMConnCor.FDQComboCores.Open();
 end;
 
 procedure TFCadCarros.FormClose(Sender: TObject; var Action: TCloseAction);
