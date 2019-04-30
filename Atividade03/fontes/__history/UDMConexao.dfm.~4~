@@ -1,0 +1,40 @@
+object DMConexao: TDMConexao
+  OldCreateOrder = False
+  Height = 259
+  Width = 356
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=Aula02'
+      'User_Name=postgres'
+      'Password=admin'
+      'DriverID=PG')
+    Connected = True
+    Left = 56
+    Top = 32
+  end
+  object FDPgDriverLink: TFDPhysPgDriverLink
+    VendorHome = 
+      'C:\Users\nathan22\Documents\programacao-visual\Atividade03\fonte' +
+      's\Win32\Debug'
+    Left = 152
+    Top = 32
+  end
+  object FDQMestre: TFDQuery
+    Connection = FDConnection
+    Left = 72
+    Top = 96
+  end
+  object FDQDetalhes: TFDQuery
+    Connection = FDConnection
+    Left = 240
+    Top = 96
+  end
+  object DSDetalhe: TDataSource
+    Left = 56
+    Top = 176
+  end
+  object DSMestre: TDataSource
+    Left = 192
+    Top = 168
+  end
+end

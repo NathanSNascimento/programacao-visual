@@ -2580,4 +2580,9 @@ object FPrincipal: TFPrincipal
       OnClick = BExitClick
     end
   end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 352
+    Top = 176
+  end
 end

@@ -1,0 +1,44 @@
+object DMPesquisa: TDMPesquisa
+  OldCreateOrder = False
+  Height = 208
+  Width = 325
+  object FDQPesquisa: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'SELECT * FROM cad_carros'#13#10#10
+      
+        'INNER JOIN cad_marcas on cad_carros.id_marca = cad_marcas.id_mar' +
+        'cas'#13#10#10
+      'INNER JOIN cad_cores on cad_carros.id_cor = cad_cores.id_cor')
+    Left = 32
+    Top = 32
+  end
+  object FRPesquisaCarros: TfrxReport
+    Version = '6.3.1'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Padr'#227'o'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43579.865229513890000000
+    ReportOptions.LastChange = 43579.865229513890000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 216
+    Top = 48
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object FRPesquisaDataSet: TfrxDBDataset
+    UserName = 'FRDSPesquisaCarros'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 224
+    Top = 128
+  end
+end

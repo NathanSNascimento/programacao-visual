@@ -1,0 +1,36 @@
+object DMConexao: TDMConexao
+  OldCreateOrder = False
+  Height = 259
+  Width = 356
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=Aula02'
+      'User_Name=postgres'
+      'Password=admin'
+      'DriverID=PG')
+    Left = 72
+    Top = 32
+  end
+  object FDPgDriverLink: TFDPhysPgDriverLink
+    Left = 248
+    Top = 32
+  end
+  object FDQMestre: TFDQuery
+    Connection = FDConnection1
+    Left = 72
+    Top = 96
+  end
+  object FDQDetalhes: TFDQuery
+    Connection = FDConnection1
+    Left = 240
+    Top = 96
+  end
+  object DSDetalhe: TDataSource
+    Left = 56
+    Top = 176
+  end
+  object DSMestre: TDataSource
+    Left = 192
+    Top = 168
+  end
+end

@@ -1,0 +1,42 @@
+object FMestre: TFMestre
+  Left = 0
+  Top = 0
+  Caption = 'Relatorio de Mestre e Detalhes'
+  ClientHeight = 427
+  ClientWidth = 645
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGMestre: TDBGrid
+    Left = 72
+    Top = 32
+    Width = 505
+    Height = 153
+    DataSource = DMConexao.DSMestre
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBGDetalhe: TDBGrid
+    Left = 72
+    Top = 224
+    Width = 505
+    Height = 153
+    DataSource = DMConexao.DSDetalhe
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+end

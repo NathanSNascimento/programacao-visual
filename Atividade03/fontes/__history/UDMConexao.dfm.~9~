@@ -1,0 +1,81 @@
+object DMConexao: TDMConexao
+  OldCreateOrder = False
+  Height = 259
+  Width = 356
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=Aula02'
+      'User_Name=postgres'
+      'Password=admin'
+      'DriverID=PG')
+    Connected = True
+    Left = 56
+    Top = 32
+  end
+  object FDPgDriverLink: TFDPhysPgDriverLink
+    VendorHome = 
+      'C:\Users\nathan22\Documents\programacao-visual\Atividade03\fonte' +
+      's\Win32\Debug'
+    Left = 152
+    Top = 32
+  end
+  object FDQMestre: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from mestre')
+    Left = 72
+    Top = 96
+    object FDQMestreid_mestre: TIntegerField
+      FieldName = 'id_mestre'
+      Origin = 'id_mestre'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQMestreds_mestre: TWideStringField
+      FieldName = 'ds_mestre'
+      Origin = 'ds_mestre'
+      Size = 200
+    end
+  end
+  object FDQDetalhes: TFDQuery
+    MasterSource = DSMestre
+    MasterFields = 'id_mestre'
+    DetailFields = 'id_mestre'
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from detalhe where id_mestre = :id_mestre')
+    Left = 240
+    Top = 96
+    ParamData = <
+      item
+        Name = 'ID_MESTRE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object FDQDetalhesid_detalhe: TIntegerField
+      FieldName = 'id_detalhe'
+      Origin = 'id_detalhe'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQDetalhesid_mestre: TIntegerField
+      FieldName = 'id_mestre'
+      Origin = 'id_mestre'
+    end
+    object FDQDetalhesvalor: TFMTBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 9
+      Size = 9
+    end
+  end
+  object DSDetalhe: TDataSource
+    DataSet = FDQDetalhes
+    Left = 56
+    Top = 176
+  end
+  object DSMestre: TDataSource
+    DataSet = FDQMestre
+    Left = 192
+    Top = 168
+  end
+end

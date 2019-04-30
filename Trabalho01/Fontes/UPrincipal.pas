@@ -25,6 +25,7 @@ type
     BPesquisar: TBitBtn;
     Pesquisar: TMenuItem;
     BExit: TMenuItem;
+    Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure BCadCarrosClick(Sender: TObject);
     procedure BMarcasClick(Sender: TObject);
@@ -35,6 +36,7 @@ type
     procedure BPesquisarClick(Sender: TObject);
     procedure PesquisarClick(Sender: TObject);
     procedure BExitClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -177,6 +179,11 @@ begin
 
     FPesquisa.Show;
 
+end;
+
+procedure TFPrincipal.Timer1Timer(Sender: TObject);
+begin
+  StatusBar1.Panels[2].text := DateToStr(Date) + ' ' + TimeToStr(time);
 end;
 
 end.
