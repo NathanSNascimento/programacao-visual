@@ -20,7 +20,7 @@ object FCadMarcas: TFCadMarcas
     Top = 0
     Width = 369
     Height = 201
-    ActivePage = TConsulta
+    ActivePage = TCadastro
     TabOrder = 0
     object TCadastro: TTabSheet
       Caption = 'Cadastro'

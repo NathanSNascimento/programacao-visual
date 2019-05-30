@@ -1,0 +1,21 @@
+object q: Tq
+  OldCreateOrder = False
+  Height = 222
+  Width = 376
+  object FDQVendas: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from mov_vendas')
+    Left = 40
+    Top = 40
+  end
+  object FDQItens: TFDQuery
+    Connection = DMConexao.FDConexao
+    Left = 120
+    Top = 40
+  end
+  object FDQuery1: TFDQuery
+    Left = 208
+    Top = 48
+  end
+end

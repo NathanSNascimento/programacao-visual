@@ -1,0 +1,12 @@
+object DMUsers: TDMUsers
+  OldCreateOrder = False
+  Height = 227
+  Width = 386
+  object FDQUsers: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from cad_usuario')
+    Left = 72
+    Top = 64
+  end
+end

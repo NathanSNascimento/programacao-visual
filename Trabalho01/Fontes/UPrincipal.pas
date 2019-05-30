@@ -26,6 +26,8 @@ type
     Pesquisar: TMenuItem;
     BExit: TMenuItem;
     Timer1: TTimer;
+    BUsers: TBitBtn;
+    asd1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure BCadCarrosClick(Sender: TObject);
     procedure BMarcasClick(Sender: TObject);
@@ -37,6 +39,8 @@ type
     procedure PesquisarClick(Sender: TObject);
     procedure BExitClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure BUsersClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +55,7 @@ implementation
 {$R *.dfm}
 
 uses UDMConexao, UCadCarros, UCadCores, UCadMarca, UDMConCor, UDMConMarcas,
-  UDMPesquisa, UPesquisar;
+  UDMPesquisa, UPesquisar, UCadUsers, UDMUsers, ULogin;
 
 procedure TFPrincipal.BCadCarrosClick(Sender: TObject);
 begin
@@ -111,6 +115,17 @@ begin
 
 end;
 
+procedure TFPrincipal.BUsersClick(Sender: TObject);
+begin
+    if not Assigned (DMUsers) then
+    application.CreateForm(TDMUsers, DMUsers);
+
+    if not Assigned (FCadUsers) then
+    application.CreateForm(TFCadUsers, FCadUsers);
+
+    FCadUsers.Show;
+end;
+
 procedure TFPrincipal.Carros1Click(Sender: TObject);
 begin
     if not Assigned (DMConexao) then
@@ -158,6 +173,67 @@ begin
   //end;
 end;
 
+procedure TFPrincipal.FormShow(Sender: TObject);
+var
+  i, x, ix, iz, npos: integer;
+  snivel:string;
+begin
+  Application.CreateForm(TFLogin, FLogin);
+  if FLogin.ShowModal = mrok then
+  begin
+    DMConexao.FDQNivel.close;
+    DmConexao.FDQNivel.ParamByName('pid').Value := flogin.user;
+    DMConexao.FdqNivel.Open;
+    snivel := DMConexao.FDQNivelnivel.Value;
+    stausBar1.panels[3].Text :=
+    'Usuário: ' + DMConexao.FDQNivelnm_usuario.Value;
+    npos := 1;
+    //1º Nivel do menu
+    for i := 0 to Menu.Items.Count - 1 do
+      begin
+        if Menu.Items[i].Caption <> '-' then
+        begin
+          if not snivel.IsEmpty then
+          begin
+            if Copy(snivel, npos, 1) = 'S' then
+              Menu.Items[i].Enabled := True
+            else
+              Menu.Items[i].Enabled = False;
+              npos := npos + 1;
+            //2º Nivel do menu
+            for ix := 0 to Menu.Items[i].Items[ix].Count -1 do
+              begin
+                if Menu.Items[i].Items[ix].Caption <> '=' then
+                begin
+                  if Copy(snivel, npos, 1) = 'S' then
+                    Menu.Items[i].Items[ix].Enabled := True
+                  else
+                    Menu.Items[i].Items[ix].Enabled = False;
+                    npos := npos + 1;
+                  //3º Nivel do menu
+                  for iz := 0 to Menu.Items[i].Items[ix].Count -1 do
+                    begin
+                      if Menu.Items[i].Items[ix].Items[iz].Caption <> '-' then
+                      begin
+                        if Copy(snivel, npos, 1) = 'S' then
+                          Menu.Items[i].Items[ix].Items[iz].Enabled := True
+                        else
+                          Menu.Items[i].Items[ix].Items[iz].Enabled = False;
+                          npos := npos + 1;
+                      end;
+
+                    end;
+                end;
+
+
+              end;
+          end;
+        end;
+      end;
+
+  end;
+end;
+
 procedure TFPrincipal.Marcas1Click(Sender: TObject);
 begin
   if not Assigned (DMConnMarca) then
@@ -183,7 +259,7 @@ end;
 
 procedure TFPrincipal.Timer1Timer(Sender: TObject);
 begin
-  StatusBar1.Panels[2].text := DateToStr(Date) + ' ' + TimeToStr(time);
+  //StatusBar1.Panels[2].text := DateToStr(Date) + ' ' + TimeToStr(time);
 end;
 
 end.

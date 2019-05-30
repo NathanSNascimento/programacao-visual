@@ -1,0 +1,25 @@
+unit UDMVendas;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TDMVenda = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMVenda: TDMVenda;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

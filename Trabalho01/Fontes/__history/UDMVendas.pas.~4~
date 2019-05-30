@@ -1,0 +1,34 @@
+unit UDMVendas;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  Tq = class(TDataModule)
+    FDQVendas: TFDQuery;
+    FDQItens: TFDQuery;
+    FDQProduto: TFDQuery;
+    FDQCliente: TFDQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  q: Tq;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses UDMConexao;
+
+{$R *.dfm}
+
+end.

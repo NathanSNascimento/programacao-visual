@@ -10,7 +10,12 @@ uses
   UDMConMarcas in 'UDMConMarcas.pas' {DMConnMarca: TDataModule},
   UPrincipal in 'UPrincipal.pas' {FPrincipal},
   UPesquisar in 'UPesquisar.pas' {FPesquisa},
-  UDMPesquisa in 'UDMPesquisa.pas' {DMPesquisa: TDataModule};
+  UDMPesquisa in 'UDMPesquisa.pas' {DMPesquisa: TDataModule},
+  UDMUsers in 'UDMUsers.pas' {DMUsers: TDataModule},
+  UCadUsers in 'UCadUsers.pas' {FCadUsers},
+  ULogin in 'ULogin.pas' {FLogin},
+  UDMVendas in 'UDMVendas.pas' {DMVenda: TDataModule},
+  UMovVenda in 'UMovVenda.pas' {FMovVenda};
 
 {$R *.res}
 
@@ -19,5 +24,8 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDMConexao, DMConexao);
   Application.CreateForm(TFPrincipal, FPrincipal);
+  Application.CreateForm(TFLogin, FLogin);
+  Application.CreateForm(TDMVenda, DMVenda);
+  Application.CreateForm(TFMovVenda, FMovVenda);
   Application.Run;
 end.

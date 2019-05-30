@@ -1,0 +1,33 @@
+object q: Tq
+  OldCreateOrder = False
+  Height = 222
+  Width = 376
+  object FDQVendas: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from mov_vendas')
+    Left = 40
+    Top = 40
+  end
+  object FDQItens: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from itens_venda')
+    Left = 120
+    Top = 40
+  end
+  object FDQProduto: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from cad_produtos')
+    Left = 208
+    Top = 48
+  end
+  object FDQCliente: TFDQuery
+    Connection = DMConexao.FDConexao
+    SQL.Strings = (
+      'select * from cad_cliente')
+    Left = 144
+    Top = 144
+  end
+end

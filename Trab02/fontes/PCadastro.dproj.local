@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/04/14 00:00:01.000.010,=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/06 21:38:40.441,=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/06 21:41:44.596,C:\Users\nathan22\Documents\programacao-visual\Trab02\fontes\UCadastro.dfm=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2019/05/06 21:41:44.596,C:\Users\nathan22\Documents\programacao-visual\Trab02\fontes\UCadastro.pas=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/06 21:41:54.630,C:\Users\nathan22\Documents\programacao-visual\Trab02\fontes\PCadastro.dproj=C:\Users\nathan22\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

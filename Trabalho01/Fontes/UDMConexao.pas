@@ -24,6 +24,7 @@ type
     FDQCarrosano: TIntegerField;
     FDQCarrosdescricao: TWideStringField;
     FDQComboCor: TFDQuery;
+    FDQNivel: TFDQuery;
   private
     { Private declarations }
   public
